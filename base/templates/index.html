@@ -1,0 +1,63 @@
+<html>
+<head>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="page-header">
+  <h1>项目进展<small>文思工作室</small></h1>
+</div>
+<div class="container">
+{% if project_list %}
+	{% for p in project_list %}
+		<h1>{{ p.name }}</h1>
+		<h6>{{ p.description }}</h6>
+		<table class="table table-bordered table-striped">
+		  <thead>
+		  	<tr>
+		  		<td>任务</td>
+		  		<td>项目</td>
+		  		<td>负责人</td>
+		  		<td>计划</td>
+		  		<td>截止</td>
+		  		<td>优先级</td>
+		  	</tr>
+		  </thead>
+		  <tbody>
+		  	{% for t in p.tasks.all %}
+			  <tr class="
+			  {% if t.status == 1 %}
+			  	success
+			  {% elif t.priority == 1 %}
+			  	info
+			  {% elif t.priority == 2 %}
+			  	warning
+			  {% elif t.priority == 3 %}
+			  	danger
+			  {% endif %}">
+			  	<td>{{t.name}}</td>
+			  	<td>{{t.project}}</td>
+			  	<td>{{t.assign_to}}</td>
+			  	<td>{{t.plan_date}}</td>
+			  	<td>{{t.due_date}}</td>
+			  	<td>{{t.get_priority_display}}</td>
+			  </tr>
+		  	{% endfor %}
+		  </tbody>
+		</table>
+	{% endfor %}
+	</ul>
+{% endif %}
+</div>
+</body>
+</html>
