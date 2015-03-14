@@ -22,13 +22,14 @@
 	{% for p in project_list %}
 		<h1>{{ p.name }}</h1>
 		<h6>{{ p.description }}</h6>
-		<table class="table table-bordered table-striped">
+		<table class="table table-bordered table-striped text-center">
 		  <thead>
 		  	<tr>
 		  		<td>任务</td>
 		  		<td>项目</td>
 		  		<td>负责人</td>
 		  		<td>计划</td>
+		  		<td>进度</td>
 		  		<td>截止</td>
 		  		<td>优先级</td>
 		  	</tr>
@@ -49,6 +50,13 @@
 			  	<td>{{t.project}}</td>
 			  	<td>{{t.assign_to}}</td>
 			  	<td>{{t.plan_date}}</td>
+				<td>
+					<div class="progress">
+	  					<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{t.progress}}"
+	  						aria-valuemin="0" aria-valuemax="100" style="width:{{t.progress}}%">{{t.progress}}%
+	  					</div>
+					</div>
+				</td>
 			  	<td>{{t.due_date}}</td>
 			  	<td>{{t.get_priority_display}}</td>
 			  </tr>
