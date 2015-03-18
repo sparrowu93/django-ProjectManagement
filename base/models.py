@@ -30,7 +30,7 @@ class Milestone(models.Model):
 
     def __str__(self):
         return u'%s' % self.name
-    
+
     class Meta:
         verbose_name = "项目里程碑信息"
         verbose_name_plural = "项目里程碑信息"
@@ -66,10 +66,10 @@ class Task(models.Model):
     priority  = models.IntegerField(max_length=2, choices=PRIORITY_CHOICES, default=0, help_text="优先级", verbose_name=u"优先级")
     name = models.CharField(max_length=20, help_text="任务名", verbose_name=u"任务名称")
     assign_to = models.ForeignKey(User, help_text="任务跟进人", verbose_name=u"负责人")
-    description = models.TextField(max_length=100, help_text="issue 内容", verbose_name=u"任务详情")
-    progress = models.IntegerField(max_length=2, default=0, help_text="%", verbose_name=u"任务进度")
-    plan_date = models.DateTimeField(blank=True, null=True, help_text="任务截止时间", verbose_name=u"任务截止时间")
-    due_date = models.DateTimeField(blank=True, null=True, help_text="任务完成时间", verbose_name=u"任务时间")
+    description = models.TextField(max_length=100, help_text="issue 内容", verbose_name=u"详情")
+    progress = models.IntegerField(max_length=2, default=0, help_text="%", verbose_name=u"进度")
+    plan_date = models.DateTimeField(blank=True, null=True, help_text="任务截止日期", verbose_name=u"截止日期")
+    due_date = models.DateTimeField(blank=True, null=True, help_text="完成日期", verbose_name=u"完成日期")
     created_time = models.DateTimeField(auto_now_add=True, help_text="初次上传时间", verbose_name=u"初次上传时间")
     updated_time = models.DateTimeField(auto_now=True, help_text="上次更新时间", verbose_name=u"上次更新时间")
 
@@ -79,7 +79,8 @@ class Task(models.Model):
 
     def __str__(self):
         return u'%s' % self.name
-    
+
     class Meta:
         verbose_name = "项目任务信息"
         verbose_name_plural = "项目任务信息"
+        ordering = ['status','-priority','-progress']
