@@ -19,6 +19,13 @@ class Project(models.Model):
         verbose_name = "项目信息"
         verbose_name_plural = "项目信息"
 
+    def get_unfinished_tasks(self):
+        return self.tasks.filter(status=0)
+
+    def get_finished_tasks(self):
+        return self.tasks.filter(status=1)
+
+
 
 @python_2_unicode_compatible
 class Milestone(models.Model):
