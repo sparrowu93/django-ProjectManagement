@@ -4,6 +4,6 @@ from base.models import Project, Task
 
 # Create your views here.
 def index(request):
-	project_list = Project.objects.order_by('status').order_by('pk')
+	project_list = Project.objects.order_by('-status', 'priority', 'progress', 'pk')
 	context = {'project_list': project_list}
 	return render(request, 'index.html', context)
