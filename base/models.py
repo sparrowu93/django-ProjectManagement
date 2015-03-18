@@ -83,4 +83,4 @@ class Task(models.Model):
     class Meta:
         verbose_name = "项目任务信息"
         verbose_name_plural = "项目任务信息"
-        ordering = ['status','-priority','progress']
+        ordering = ['status','-priority','-progress']
