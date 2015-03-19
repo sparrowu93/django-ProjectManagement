@@ -88,7 +88,7 @@
 			<tbody>
 				{% for t in p.get_finished_tasks %}
 				<tr>
-					<td><a href="{% url 'show_task_detail' t.id %}">{{t.name}}</a></td>
+					<td><a href="{% url 'show_task_detail' t.id %}#disqus_thread">{{t.name}}</a></td>
 					<td class="
 					{% if t.priority == 0 %}
 						btn-success
@@ -126,5 +126,17 @@
 	</ul>
 {% endif %}
 </div>
+<script type="text/javascript">
+		/* * * CONFIGURATION VARIABLES * * */
+		var disqus_shortname = 'nsnq-pm';
+
+		/* * * DON'T EDIT BELOW THIS LINE * * */
+		(function () {
+				var s = document.createElement('script'); s.async = true;
+				s.type = 'text/javascript';
+				s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+				(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+		}());
+</script>
 </body>
 </html>
