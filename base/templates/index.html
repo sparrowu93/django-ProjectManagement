@@ -38,7 +38,7 @@
 		  <tbody>
 		  	{% for t in p.get_unfinished_tasks %}
 			  <tr>
-			  	<td><a href="{% url 'show_task_detail' t.id %}">{{t.name}}</a><a href="{% url 'show_task_detail' t.id %}#disqus_thread">留言数</a></td>
+			  	<td class="col-md-3"><a href="{% url 'show_task_detail' t.id %}">{{t.name}}</a><a href="{% url 'show_task_detail' t.id %}#disqus_thread"></a></td>
 				  <td class="
 				  {% if t.priority == 0 %}
 				  	btn-success
@@ -88,7 +88,7 @@
 			<tbody>
 				{% for t in p.get_finished_tasks %}
 				<tr>
-					<td><a href="{% url 'show_task_detail' t.id %}">{{t.name}}</a><a href="{% url 'show_task_detail' t.id %}#disqus_thread">留言数</a></td>
+					<td class="col-md-3"><a href="{% url 'show_task_detail' t.id %}">{{t.name}}</a><a href="{% url 'show_task_detail' t.id %}#disqus_thread"></a></td>
 					<td class="
 					{% if t.priority == 0 %}
 						btn-success
