@@ -38,7 +38,7 @@
 		  <tbody>
 		  	{% for t in p.get_unfinished_tasks %}
 			  <tr>
-			  	<td><a href="{% url 'show_task_detail' t.id %}">{{t.name}}</a></td>
+			  	<td><a href="{% url 'show_task_detail' t.id %}#disqus_thread">{{t.name}}</a></td>
 				  <td class="
 				  {% if t.priority == 0 %}
 				  	btn-success
